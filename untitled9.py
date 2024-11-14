@@ -7,11 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1cmQo4Pxl-HcJtzd7bNayItbiiC3_tzFM
 """
 
-import streamlit as st
-# Título de la aplicación
-st.title('Mi Primera Aplicación Web con Streamlit')
-# Texto simple
-st.write('Esta es una aplicación web de ejemplo utilizando Streamlit.'
 
 import streamlit as st
 import pandas as pd
@@ -42,27 +37,4 @@ df_filtrado = df[df[col] >= valor_min]
 st.write(f'Datos filtrados donde {col} >= {valor_min}:')
 st.write(df_filtrado)
 
-# Crear gráfico de histograma
-fig, ax = plt.subplots()
-ax.hist(df[col], bins=20)
-ax.set_title(f'Histograma de {col}')
-ax.set_xlabel(col)
-ax.set_ylabel('Frecuencia')
-# Mostrar el gráfico en Streamlit
-st.pyplot(fig
 
-import altair as alt
-if uploaded_file is not None:
-df = pd.read_csv(uploaded_file)
-# Seleccionar columnas numéricas para el gráfico
-x_axis = st.selectbox('Selecciona el eje X',
-df.select_dtypes(include='number').columns)
-y_axis = st.selectbox('Selecciona el eje Y',
-df.select_dtypes(include='number').columns)
-# Crear gráfico de dispersión con Altair
-chart = alt.Chart(df).mark_circle(size=60).encode(
-x=x_axis,
-y=y_axis,
-tooltip=[x_axis, y_axis]).interactive()
-# Mostrar el gráfico en Streamlit
-st.altair_chart(chart, use_container_width=True)
